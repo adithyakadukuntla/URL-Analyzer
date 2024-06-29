@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Analysis Result</title>
+</head>
+<style>
+    body {
+        background-image: linear-gradient(to right, rgb(242, 242, 242), rgb(116, 134, 83));
+    }
+</style>
+<body>
+    <h1>Analysis Result</h1>
+    <p>URL: {{ url }}</p>
+    <p>IP Address: {{ ip }}</p>
+    <p>Server: {{ host }}</p>
+    <p>Server Host: {{ server }}</p>
+    <p>Status Code: {{ status_code }}</p>
+    
+    <p>
+        <ul>
+            <li>Informational responses (100 – 199)</li>
+            <li>Successful responses (200 – 299)</li>
+            <li>Redirection messages (300 – 399)</li>
+            <li>Client error responses (400 – 499)</li>
+            <li>Server error responses (500 – 599)</li>
+        </ul>
+    </p>
+    <h2>HTTP Headers:</h2>
+    <ul>
+        {% if headers %}
+            {% for key, value in headers.items() %}
+                <li>{{ key }}: {{ value }}</li>
+            {% endfor %}
+        {% else %}
+            <li>No headers available</li>
+        {% endif %}
+    </ul>
+    <p>Click here to go to searched URL: <a href="{{ url }}" target="_blank">{{ url }}</a></p>
+</body>
+</html>
